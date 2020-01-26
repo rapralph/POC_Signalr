@@ -8,8 +8,11 @@ namespace SignalRChat
 {
     public class ChatHub : Hub
     {
-        public void Send(string name, string message) {
-            Clients.All.broadcastMessage(name, message);
+        public void Send(string name, string message, string connID)
+        {
+            // Call the broadcastMessage method to update clients.
+            //Clients.All.broadcastMessage(name, message);
+            Clients.Client(connID).broadcastMessage(name, message);
         }
     }
 }
